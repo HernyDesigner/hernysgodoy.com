@@ -327,14 +327,12 @@
       <!-- 6 · Hero image (right side, ~55% viewport width) -->
       <div id="hero-image-wrap"
         class="absolute right-0 top-0 h-full w-full md:w-[57%] overflow-hidden opacity-0">
-        <video
-          id="hero-video"
-          loop playsinline muted autoplay
-          poster="img/H-3D-preview-portada-video.jpg"
+        <img
+          id="hero-image"
+          src="img/hernysgodoy-foto.jpg"
+          alt="Herny Godoy"
           class="w-full h-full object-cover"
           style="transform: scale(1.04); transform-origin: center center;">
-          <source src="media/H-3D.mp4" type="video/mp4">
-        </video>
         <!-- Dark gradient overlay to blend left edge -->
         <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(to right, #000 0%, transparent 30%);"></div>
       </div>
@@ -740,7 +738,7 @@
       const ctas        = document.getElementById('hero-ctas');
       const stats       = document.getElementById('hero-stats');
       const imageWrap   = document.getElementById('hero-image-wrap');
-      const heroVideo   = document.getElementById('hero-video');
+      const heroImage   = document.getElementById('hero-image');
 
       // ── Split section-02 tagline into words ─────────────────────
       const splitTagline = new SplitText(taglineEl, { type: 'words' });
@@ -811,8 +809,8 @@
       }, '<'); // starts at same time as element 2 (eyebrow)
 
       // Ken Burns: scale 1.04 → 1
-      if (heroVideo) {
-        enterTl.to(heroVideo, {
+      if (heroImage) {
+        enterTl.to(heroImage, {
           scale: 1,
           duration: 1.4,
           ease: 'power2.out',

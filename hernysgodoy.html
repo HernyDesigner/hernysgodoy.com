@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Herny Godoy — Diseño & Tecnología</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --purple: #9b30ff;
+    --purple-dim: #6b1fd4;
+    --white: #f0eee8;
+    --gray: #3a3a3a;
+    --gray-light: #888;
+    --accent: #c264ff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed; top: 0; left: 0;
+    width: 8px; height: 8px;
+    background: var(--purple);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+    mix-blend-mode: screen;
+  }
+  .cursor-ring {
+    position: fixed; top: 0; left: 0;
+    width: 32px; height: 32px;
+    border: 1px solid rgba(155,48,255,0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.18s ease, width 0.2s, height 0.2s, opacity 0.2s;
+  }
+  .cursor-ring.hover { width: 48px; height: 48px; opacity: 0.6; }
+
+  /* Noise overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: 0.35;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 24px 48px;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(155,48,255,0.1);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--purple); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--purple); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Topographic SVG background */
+  .topo-bg {
+    position: absolute; inset: 0;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--purple);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block; width: 40px; height: 1px;
+    background: var(--purple);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 10vw, 140px);
+    line-height: 0.92;
+    letter-spacing: -1px;
+    margin-bottom: 32px;
+  }
+  h1 .outline {
+    -webkit-text-stroke: 1px rgba(240,238,232,0.3);
+    color: transparent;
+  }
+  h1 .purple { color: var(--purple); }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray-light);
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 500; }
+
+  .hero-cta {
+    display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+  }
+  .btn-primary {
+    background: var(--purple);
+    color: var(--white);
+    padding: 14px 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-ghost {
+    color: var(--white);
+    padding: 14px 32px;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid rgba(240,238,232,0.2);
+    transition: border-color 0.3s, color 0.3s;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+  .btn-ghost:hover { border-color: var(--purple); color: var(--purple); }
+
+  .hero-stats {
+    position: absolute; right: 48px; bottom: 80px;
+    display: flex; flex-direction: column; gap: 24px;
+    z-index: 2;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--purple);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray-light);
+    text-transform: uppercase;
+  }
+
+  /* SECTION BASE */
+  section { padding: 100px 48px; position: relative; }
+
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--purple);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 0.95;
+    margin-bottom: 48px;
+  }
+
+  /* SERVICIOS */
+  .services { background: #0d0d0d; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .service-card {
+    background: #111;
+    padding: 40px 32px;
+    border-top: 2px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--purple);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover { background: #161616; }
+
+  .service-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--purple);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .service-icon {
+    width: 40px; height: 40px;
+    margin-bottom: 20px;
+    opacity: 0.7;
+  }
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .service-desc {
+    font-size: 14px;
+    color: var(--gray-light);
+    line-height: 1.8;
+  }
+  .service-tags {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 20px;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid var(--gray);
+    color: var(--gray-light);
+    text-transform: uppercase;
+    transition: border-color 0.3s, color 0.3s;
+  }
+  .service-card:hover .tag { border-color: rgba(155,48,255,0.4); color: var(--accent); }
+
+  /* PROPUESTA DE VALOR */
+  .value-prop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .value-text h2 { margin-bottom: 24px; }
+  .value-statement {
+    font-size: 20px;
+    color: var(--white);
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  .value-body {
+    font-size: 15px;
+    color: var(--gray-light);
+    line-height: 1.9;
+    margin-bottom: 32px;
+  }
+  .value-visual {
+    position: relative;
+  }
+  .photo-frame {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 400px;
+    margin-left: auto;
+  }
+  .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.1);
+    display: block;
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  }
+  .photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 1px solid rgba(155,48,255,0.3);
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+    z-index: -1;
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border: 1px solid rgba(155,48,255,0.1);
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+    z-index: -1;
+  }
+  .photo-badge {
+    position: absolute;
+    bottom: -20px; left: -20px;
+    background: var(--purple);
+    padding: 16px 20px;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  }
+  .photo-badge p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--white);
+  }
+  .photo-badge span {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: rgba(240,238,232,0.6);
+    text-transform: uppercase;
+  }
+
+  /* PROCESO */
+  .process { background: #0d0d0d; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 60px;
+    border: 1px solid var(--gray);
+  }
+  .step {
+    padding: 40px 28px;
+    border-right: 1px solid var(--gray);
+    position: relative;
+    transition: background 0.3s;
+  }
+  .step:last-child { border-right: none; }
+  .step:hover { background: rgba(155,48,255,0.05); }
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 1;
+    color: rgba(155,48,255,0.15);
+    margin-bottom: 16px;
+    transition: color 0.3s;
+  }
+  .step:hover .step-num { color: rgba(155,48,255,0.35); }
+  .step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    color: var(--white);
+  }
+  .step-desc { font-size: 13px; color: var(--gray-light); line-height: 1.8; }
+
+  /* CLIENTES / SECTORES */
+  .sectors-list {
+    display: flex; flex-wrap: wrap; gap: 12px;
+    margin-top: 48px;
+  }
+  .sector-pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border: 1px solid var(--gray);
+    color: var(--gray-light);
+    transition: all 0.3s;
+  }
+  .sector-pill:hover { border-color: var(--purple); color: var(--purple); }
+  .sector-pill.active { border-color: var(--purple); color: var(--purple); background: rgba(155,48,255,0.08); }
+
+  /* CTA FINAL */
+  .cta-section {
+    text-align: center;
+    padding: 120px 48px;
+    background: #0d0d0d;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: 'HERNY';
+    position: absolute;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 280px;
+    color: rgba(155,48,255,0.04);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 20px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .cta-section h2 { margin-bottom: 24px; }
+  .cta-section p {
+    font-size: 16px;
+    color: var(--gray-light);
+    max-width: 480px;
+    margin: 0 auto 48px;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 40px 48px;
+    border-top: 1px solid var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--gray-light);
+  }
+  .footer-logo span { color: var(--purple); }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .footer-tagline {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .footer-tagline span { color: var(--purple); }
+
+  /* SCROLL REVEAL */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* HORIZONTAL MARQUEE */
+  .marquee-wrap {
+    overflow: hidden;
+    padding: 24px 0;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
+    background: #0d0d0d;
+  }
+  .marquee-track {
+    display: flex; gap: 60px;
+    white-space: nowrap;
+    animation: marquee 18s linear infinite;
+  }
+  .marquee-track span {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--gray);
+    text-transform: uppercase;
+  }
+  .marquee-track span.dot { color: var(--purple); }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .hero { padding: 100px 24px 60px; }
+    .hero-stats { display: none; }
+    .value-prop { grid-template-columns: 1fr; gap: 48px; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .step { border-bottom: 1px solid var(--gray); }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">HERNY<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <!-- Topographic SVG background -->
+  <svg class="topo-bg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="rgba(155,48,255,0.6)" stroke-width="0.5">
+      <path d="M-100,450 Q200,200 400,380 Q600,560 800,340 Q1000,120 1200,300 Q1400,480 1600,350"/>
+      <path d="M-100,470 Q200,220 400,400 Q600,580 800,360 Q1000,140 1200,320 Q1400,500 1600,370"/>
+      <path d="M-100,490 Q200,240 400,420 Q600,600 800,380 Q1000,160 1200,340 Q1400,520 1600,390"/>
+      <path d="M-100,510 Q200,260 400,440 Q600,620 800,400 Q1000,180 1200,360 Q1400,540 1600,410"/>
+      <path d="M-100,530 Q200,280 400,460 Q600,640 800,420 Q1000,200 1200,380 Q1400,560 1600,430"/>
+      <path d="M-100,550 Q200,300 400,480 Q600,660 800,440 Q1000,220 1200,400 Q1400,580 1600,450"/>
+      <path d="M-100,430 Q200,180 400,360 Q600,540 800,320 Q1000,100 1200,280 Q1400,460 1600,330"/>
+      <path d="M-100,410 Q200,160 400,340 Q600,520 800,300 Q1000,80 1200,260 Q1400,440 1600,310"/>
+      <path d="M-100,390 Q200,140 400,320 Q600,500 800,280 Q1000,60 1200,240 Q1400,420 1600,290"/>
+      <path d="M-100,570 Q200,320 400,500 Q600,680 800,460 Q1000,240 1200,420 Q1400,600 1600,470"/>
+      <path d="M-100,590 Q200,340 400,520 Q600,700 800,480 Q1000,260 1200,440 Q1400,620 1600,490"/>
+      <path d="M-100,610 Q200,360 400,540 Q600,720 800,500 Q1000,280 1200,460 Q1400,640 1600,510"/>
+      <path d="M-100,370 Q200,120 400,300 Q600,480 800,260 Q1000,40 1200,220 Q1400,400 1600,270"/>
+      <path d="M-100,350 Q200,100 400,280 Q600,460 800,240 Q1000,20 1200,200 Q1400,380 1600,250"/>
+      <path d="M-100,630 Q200,380 400,560 Q600,740 800,520 Q1000,300 1200,480 Q1400,660 1600,530"/>
+    </g>
+  </svg>
+
+  <div class="hero-content">
+    <div class="eyebrow">hernysgodoy.com — Buenos Aires</div>
+    <h1>
+      DISEÑO<br>
+      <span class="outline">Y TECNO</span><br>
+      <span class="purple">LOGÍA</span>
+    </h1>
+    <p class="hero-sub">
+      <strong>Diseñador gráfico, desarrollador web y estratega digital</strong> con más de 20 años de experiencia. Ayudo a empresas y PyMEs a generar más ventas y leads con branding, desarrollo web y marketing potenciado con IA.
+    </p>
+    <div class="hero-cta">
+      <a href="#contacto" class="btn-primary">Hablemos de tu proyecto</a>
+      <a href="#servicios" class="btn-ghost">Ver servicios</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Años de experiencia</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Años en desarrollo web</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">B2B</div>
+      <div class="stat-label">Empresas y PyMEs</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>Desarrollo Web</span><span class="dot">✦</span>
+    <span>Branding</span><span class="dot">✦</span>
+    <span>Marketing Digital</span><span class="dot">✦</span>
+    <span>UX/UI</span><span class="dot">✦</span>
+    <span>SEO &amp; GEO</span><span class="dot">✦</span>
+    <span>Inteligencia Artificial</span><span class="dot">✦</span>
+    <span>Tienda Online</span><span class="dot">✦</span>
+    <span>Landing Pages</span><span class="dot">✦</span>
+    <span>Automatización</span><span class="dot">✦</span>
+    <span>Desarrollo Web</span><span class="dot">✦</span>
+    <span>Branding</span><span class="dot">✦</span>
+    <span>Marketing Digital</span><span class="dot">✦</span>
+    <span>UX/UI</span><span class="dot">✦</span>
+    <span>SEO &amp; GEO</span><span class="dot">✦</span>
+    <span>Inteligencia Artificial</span><span class="dot">✦</span>
+    <span>Tienda Online</span><span class="dot">✦</span>
+    <span>Landing Pages</span><span class="dot">✦</span>
+    <span>Automatización</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<section class="services reveal" id="servicios">
+  <div class="section-tag">// 01 — Servicios</div>
+  <h2>LO QUE<br>CONSTRUYO</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="8" width="32" height="24" rx="2" stroke="#9b30ff" stroke-width="1.2"/>
+        <path d="M4 14h32" stroke="#9b30ff" stroke-width="1.2"/>
+        <circle cx="8" cy="11" r="1" fill="#9b30ff"/>
+        <circle cx="12" cy="11" r="1" fill="#9b30ff"/>
+        <path d="M14 20l4 4 8-8" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-title">Desarrollo Web</div>
+      <p class="service-desc">Sitios y aplicaciones orientadas a conversión. Front-end con HTML, CSS, JavaScript y UX/UI que conecta marca con resultados.</p>
+      <div class="service-tags">
+        <span class="tag">JavaScript</span><span class="tag">HTML/CSS</span><span class="tag">UX/UI</span><span class="tag">WordPress</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="14" stroke="#9b30ff" stroke-width="1.2"/>
+        <path d="M20 6v4M20 30v4M6 20h4M30 20h4" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="5" stroke="#9b30ff" stroke-width="1.2"/>
+      </svg>
+      <div class="service-title">Branding &amp; Diseño</div>
+      <p class="service-desc">Identidad visual que comunica y vende. Logo, paleta, tipografía y sistema de marca para que tu negocio se vea diferente y profesional.</p>
+      <div class="service-tags">
+        <span class="tag">Logo</span><span class="tag">Identidad visual</span><span class="tag">Packaging</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 32l8-12 6 8 4-6 6 10" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="30" cy="12" r="6" stroke="#9b30ff" stroke-width="1.2"/>
+        <path d="M30 9v3l2 2" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-title">Marketing Digital</div>
+      <p class="service-desc">Estrategia, redes sociales, campañas y gestión de leads por WhatsApp. Marketing que se mide y se optimiza para generar ventas reales.</p>
+      <div class="service-tags">
+        <span class="tag">SEO</span><span class="tag">GEO</span><span class="tag">Redes Sociales</span><span class="tag">Google Ads</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="12" width="10" height="10" rx="2" stroke="#9b30ff" stroke-width="1.2"/>
+        <rect x="22" y="12" width="10" height="10" rx="2" stroke="#9b30ff" stroke-width="1.2"/>
+        <rect x="15" y="26" width="10" height="8" rx="2" stroke="#9b30ff" stroke-width="1.2"/>
+        <path d="M13 22l7 4M27 22l-7 4" stroke="#9b30ff" stroke-width="1.2"/>
+      </svg>
+      <div class="service-title">IA &amp; Automatización</div>
+      <p class="service-desc">Integración de inteligencia artificial en flujos de trabajo, atención al cliente y procesos de venta para que tu negocio escale sin complejidad.</p>
+      <div class="service-tags">
+        <span class="tag">IA Generativa</span><span class="tag">Automatización</span><span class="tag">Chatbots</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 28l8-10 6 6 4-4 6 8" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 32h20" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M30 8l2 6-6-1" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="service-title">Tienda Online B2B</div>
+      <p class="service-desc">Desarrollo de e-commerce con foco en conversión B2B. Catálogo, gestión de pedidos y experiencia de compra optimizada para empresas.</p>
+      <div class="service-tags">
+        <span class="tag">E-commerce</span><span class="tag">B2B</span><span class="tag">Catálogo digital</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <svg class="service-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 20 Q20 8 30 20 Q20 32 10 20Z" stroke="#9b30ff" stroke-width="1.2" fill="none"/>
+        <circle cx="20" cy="20" r="4" stroke="#9b30ff" stroke-width="1.2"/>
+        <path d="M20 8v4M20 28v4M8 20h4M28 20h4" stroke="#9b30ff" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      <div class="service-title">Landing Pages</div>
+      <p class="service-desc">Páginas de captación diseñadas para convertir visitantes en leads y leads en clientes. Velocidad, claridad y persuasión en cada sección.</p>
+      <div class="service-tags">
+        <span class="tag">Conversión</span><span class="tag">Lead generation</span><span class="tag">CRO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section class="reveal" id="sobre-mi" style="padding: 100px 48px;">
+  <div class="value-prop">
+    <div class="value-text">
+      <div class="section-tag">// 02 — Sobre mí</div>
+      <h2>DISEÑO<br>Y TECNO<br><span style="color:var(--purple)">LOGÍA</span></h2>
+      <p class="value-statement">Para ideas sustentables.</p>
+      <p class="value-body">Con más de 20 años en diseño y 10 en desarrollo web, trabajo con empresas y PyMEs que necesitan más que una web bonita — necesitan resultados.<br><br>
+      Diseño marcas, desarrollo sitios orientados a conversión y ejecuto estrategias de marketing digital potenciadas con IA para que sus clientes ideales los encuentren, confíen y compren.<br><br>
+      No soy solo desarrollador ni solo diseñador. Soy el profesional que une marca, tecnología y estrategia para que todo funcione junto — y se refleje en ventas.</p>
+      <a href="https://wa.me/541135884615" class="btn-primary" style="display:inline-block;">Iniciar conversación</a>
+    </div>
+    <div class="value-visual">
+      <div class="photo-frame">
+        <img src="https://hernydesigner.github.io/Programa-de-Lanzamiento-y-Posicionamiento-Fleet-Link-Group/img/H-isologo-bg.svg"
+             alt="Herny Godoy"
+             onerror="this.style.background='#1a1a1a'; this.style.minHeight='400px';">
+        <div class="photo-badge">
+          <p>Quilmes<br>Buenos Aires</p>
+          <span>Argentina · Remoto global</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectors-list" style="margin-top: 80px;">
+    <div class="section-tag" style="width:100%; margin-bottom:8px;">// Sectores que trabajo</div>
+    <span class="sector-pill active">Logística</span>
+    <span class="sector-pill">E-commerce</span>
+    <span class="sector-pill">Manufactura / Fábricas</span>
+    <span class="sector-pill">Agencias digitales</span>
+    <span class="sector-pill">Emprendimientos</span>
+    <span class="sector-pill">PyMEs</span>
+    <span class="sector-pill">Sustentabilidad</span>
+    <span class="sector-pill">B2B</span>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="process reveal" id="proceso">
+  <div class="section-tag">// 03 — Cómo trabajo</div>
+  <h2>EL<br>PROCESO</h2>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Diagnóstico</div>
+      <p class="step-desc">Entiendo tu negocio, tus objetivos y dónde estás parado digitalmente. Sin esto, no hay estrategia real.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Estrategia</div>
+      <p class="step-desc">Defino qué hace falta construir y en qué orden. Marca, web, contenido o campañas — según lo que realmente necesitás.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Ejecución</div>
+      <p class="step-desc">Diseño y desarrollo con foco en el resultado. Cada decisión tiene un porqué estratégico, no solo estético.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Resultados</div>
+      <p class="step-desc">Mido, optimizo y escalo. El trabajo no termina con la entrega — termina cuando los números mejoran.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section reveal" id="contacto">
+  <div class="section-tag" style="justify-content:center; display:flex; gap:12px; align-items:center; margin-bottom:24px;">
+    <span style="display:block;width:40px;height:1px;background:var(--purple);"></span>
+    // 04 — Contacto
+    <span style="display:block;width:40px;height:1px;background:var(--purple);"></span>
+  </div>
+  <h2>¿LISTO PARA<br><span style="color:var(--purple)">CRECER?</span></h2>
+  <p>Contame tu proyecto. En 24hs te respondo con una propuesta concreta o agendamos un diagnóstico gratuito.</p>
+  <div style="display:flex; gap:16px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://wa.me/541135884615?text=Hola%20Herny%2C%20quiero%20hablar%20sobre%20mi%20proyecto." class="btn-primary">WhatsApp directo</a>
+    <a href="mailto:herny@hernysgodoy.com" class="btn-ghost">Enviar email</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">HERNY<span>S</span>GODOY</div>
+  <div class="footer-tagline">Design &amp; technology for <span>sustainable ideas</span></div>
+  <div class="footer-copy">© 2026 hernysgodoy.com</div>
+</footer>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.transform = `translate(${mx - 4}px, ${my - 4}px)`;
+  });
+
+  function animateRing() {
+    rx += (mx - rx - 16) * 0.12;
+    ry += (my - ry - 16) * 0.12;
+    ring.style.transform = `translate(${rx}px, ${ry}px)`;
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  document.querySelectorAll('a, button, .service-card, .step, .sector-pill').forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Sector pills toggle
+  document.querySelectorAll('.sector-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.sector-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

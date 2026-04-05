@@ -258,9 +258,9 @@
       </h1>
     </section>
 
-    <!-- SECTION 03: Real Hero (two-column layout) -->
+    <!-- SECTION HERO CONTENT: Real Hero (two-column layout) -->
     <section
-      id="section-03"
+      id="section-hero-main"
       class="hero-main relative min-w-screen min-h-screen flex items-center overflow-hidden"
       style="padding: 6rem 0;">
 
@@ -338,6 +338,272 @@
       </div>
 
     </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         MARQUEE SECTION
+    ════════════════════════════════════════════════════════════════ -->
+    <div class="marquee-wrap relative py-8 border-y border-white/5 bg-black/50 backdrop-blur-sm overflow-hidden">
+      <div class="marquee-track flex gap-12 whitespace-nowrap items-center animate-marquee">
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">Desarrollo Web</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">Branding</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">Marketing Digital</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">UX/UI Design</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">E-commerce B2B</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">IA & Automation</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <!-- Repeated for animation loop -->
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">Desarrollo Web</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">Branding</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">Marketing Digital</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">UX/UI Design</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">E-commerce B2B</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-royal-violet shadow-[0_0_10px_rgba(139,92,246,0.5)]"></span>
+        <span class="text-white/20 font-bold tracking-[0.4em] uppercase text-xs italic">IA & Automation</span>
+      </div>
+      <style>
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+      </style>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 03: SERVICIOS
+    ════════════════════════════════════════════════════════════════ -->
+    <section id="section-03" class="reveal py-24 px-8 md:px-16 relative">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col mb-16">
+          <span class="text-xs tracking-[0.3em] font-mono text-royal-violet mb-4 uppercase text-reveal">// 01 — Servicios</span>
+          <h2 class="text-white text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-reveal">Lo que<br>construyo</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- CARD 1 -->
+          <div class="service-card group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:border-royal-violet/30 overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all"></div>
+            <div class="text-white/20 font-mono text-xs mb-8 tracking-widest">01</div>
+            <div class="mb-6">
+              <svg class="w-10 h-10 text-royal-violet transition-transform duration-500 group-hover:scale-110" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="8" width="32" height="24" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M4 14h32" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M14 22l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Desarrollo Web</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">Sitios y aplicaciones orientadas a conversión. Front-end con HTML, CSS, JavaScript y UX/UI que conecta marca con resultados.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">JavaScript</span>
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">HTML/CSS</span>
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">UX/UI</span>
+            </div>
+          </div>
+          <!-- CARD 2 -->
+          <div class="service-card group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:border-royal-violet/30 overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all"></div>
+            <div class="text-white/20 font-mono text-xs mb-8 tracking-widest">02</div>
+            <div class="mb-6">
+              <svg class="w-10 h-10 text-royal-violet transition-transform duration-500 group-hover:scale-110" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="14" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M20 6v4M20 30v4M6 20h4M30 20h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="20" cy="20" r="5" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Branding & Diseño</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">Identidad visual que comunica y vende. Logo, paleta, tipografía y sistema de marca para que tu negocio se vea diferente.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Logo</span>
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Identidad</span>
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Packaging</span>
+            </div>
+          </div>
+          <!-- CARD 3 -->
+          <div class="service-card group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:border-royal-violet/30 overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all"></div>
+            <div class="text-white/20 font-mono text-xs mb-8 tracking-widest">03</div>
+            <div class="mb-6">
+              <svg class="w-10 h-10 text-royal-violet transition-transform duration-500 group-hover:scale-110" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 32l8-12 6 8 4-6 6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="30" cy="12" r="6" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Marketing Digital</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">Estrategia, redes sociales, campañas y gestión de leads. Marketing que se mide y se optimiza para generar ventas reales.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">SEO/GEO</span>
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Google Ads</span>
+              <span class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Redes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 04: SOBRE MÍ
+    ════════════════════════════════════════════════════════════════ -->
+    <section id="section-04" class="reveal py-24 px-8 md:px-16 bg-[#050505] relative overflow-hidden">
+      <!-- Background elements -->
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-royal-violet/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+        <!-- LEFT: Visual -->
+        <div class="w-full md:w-1/2 relative">
+          <div class="relative max-w-md mx-auto aspect-square group">
+            <div class="absolute inset-0 border border-royal-violet/20 rounded-3xl translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500"></div>
+            <div class="absolute inset-0 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm z-10 flex items-center justify-center overflow-hidden">
+              <img
+                src="img/H-isologo-bg.svg"
+                alt="HernysGodoy"
+                class="w-48 h-48 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700">
+              <div class="absolute bottom-6 left-6 z-20">
+                <p class="text-white font-bold text-2xl tracking-tighter leading-none">Buenos Aires<br><span class="text-royal-violet text-sm font-mono tracking-widest uppercase">Argentina</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Text -->
+        <div class="w-full md:w-1/2 flex flex-col gap-6">
+          <span class="text-xs tracking-[0.3em] font-mono text-royal-violet uppercase text-reveal">// 02 — Sobre mí</span>
+          <h2 class="text-white text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-reveal">Estrategia<br>y marca</h2>
+          <p class="text-royal-violet font-mono text-sm tracking-widest uppercase">Para ideas sustentables</p>
+          <p class="text-white/60 text-base leading-relaxed">
+            Con más de 20 años en diseño y 10 en desarrollo web, trabajo con empresas y PyMEs que necesitan más que una web bonita — necesitan resultados.
+            <br><br>
+            Diseño marcas, desarrollo sitios orientados a conversión y ejecuto estrategias de marketing digital potenciadas con IA para que sus clientes ideales los encuentren, confíen y compren.
+            <br><br>
+            No soy solo desarrollador ni solo diseñador. Soy el profesional que une marca, tecnología y estrategia para que todo funcione junto — y se refleje en ventas.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-4">
+             <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-white/40 tracking-widest uppercase">Logística</span>
+             <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-white/40 tracking-widest uppercase">B2B</span>
+             <span class="px-3 py-1 bg-royal-violet/10 border border-royal-violet/20 rounded-full text-[10px] text-royal-violet tracking-widest uppercase">Sustentabilidad</span>
+             <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-white/40 tracking-widest uppercase">Fábricas</span>
+          </div>
+
+          <div class="mt-8">
+            <a href="https://wa.me/541135884615" class="inline-flex items-center gap-3 text-white font-bold tracking-widest text-xs group">
+              INICIAR CONVERSACIÓN
+              <span class="w-8 h-[1px] bg-royal-violet group-hover:w-12 transition-all"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 05: PROCESO
+    ════════════════════════════════════════════════════════════════ -->
+    <section id="section-05" class="reveal py-24 px-8 md:px-16 relative bg-black">
+       <div class="max-w-7xl mx-auto">
+          <div class="flex flex-col mb-16 items-center text-center">
+            <span class="text-xs tracking-[0.3em] font-mono text-royal-violet mb-4 uppercase text-reveal">// 03 — Metodología</span>
+            <h2 class="text-white text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9] text-reveal">El Proceso</h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-0 border border-white/10 rounded-2xl overflow-hidden backdrop-blur-sm">
+            <!-- STEP 1 -->
+            <div class="group p-8 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors">
+              <div class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">01</div>
+              <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Diagnóstico</h4>
+              <p class="text-white/40 text-sm leading-relaxed">Entiendo tu negocio, tus objetivos y dónde estás parado digitalmente. Sin esto, no hay estrategia real.</p>
+            </div>
+            <!-- STEP 2 -->
+            <div class="group p-8 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors">
+              <div class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">02</div>
+              <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Estrategia</h4>
+              <p class="text-white/40 text-sm leading-relaxed">Defino qué hace falta construir y en qué orden. Marca, web, contenido o campañas.</p>
+            </div>
+            <!-- STEP 3 -->
+            <div class="group p-8 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors">
+              <div class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">03</div>
+              <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Ejecución</h4>
+              <p class="text-white/40 text-sm leading-relaxed">Diseño y desarrollo con foco en el resultado. Cada decisión tiene un porqué estratégico.</p>
+            </div>
+            <!-- STEP 4 -->
+            <div class="group p-8 hover:bg-white/[0.02] transition-colors">
+              <div class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">04</div>
+              <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Resultados</h4>
+              <p class="text-white/40 text-sm leading-relaxed">Mido, optimizo y escalo. El trabajo no termina con la entrega — termina cuando los números mejoran.</p>
+            </div>
+          </div>
+       </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         SECTION 06: CTA FINAL
+    ════════════════════════════════════════════════════════════════ -->
+    <section id="section-06" class="reveal py-32 px-8 md:px-16 relative overflow-hidden bg-black text-center">
+      <!-- Background giant text -->
+      <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
+        <span class="text-[20vw] font-bold tracking-tighter text-royal-violet">HERNY</span>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
+        <span class="text-xs tracking-[0.3em] font-mono text-royal-violet mb-8 uppercase text-reveal">// ¿Listo para crecer?</span>
+        <h2 class="text-white text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.8] mb-8 text-reveal">Hablemos hoy</h2>
+        <p class="text-white/60 text-lg md:text-xl max-w-xl mb-12">
+          Contame tu proyecto. En 24hs te respondo con una propuesta concreta o agendamos un diagnóstico gratuito.
+        </p>
+
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+            <!-- Shiny Primary Button -->
+            <div class="relative group">
+              <div class="relative w-72 h-16 opacity-90 overflow-hidden rounded-2xl bg-black z-10">
+                <div
+                  class="absolute z-10 -translate-x-44 group-hover:translate-x-[30rem] ease-in transition-all duration-700 h-full w-44 bg-gradient-to-r from-gray-500 to-white/10 opacity-30 -skew-x-12">
+                </div>
+                <div
+                  class="absolute flex items-center justify-center text-white z-[1] opacity-90 rounded-2xl inset-[1px] bg-black">
+                  <a href="https://wa.me/541135884615?text=Hola%20Herny%2C%20quiero%20hablar%20sobre%20mi%20proyecto."
+                    class="flex items-center justify-center text-lg font-bold tracking-widest uppercase w-full h-full rounded-2xl bg-black transition-colors hover:text-royal-violet">WhatsApp Directo</a>
+                </div>
+                <div
+                  class="absolute duration-1000 group-hover:animate-spin w-full h-[120px] bg-gradient-to-r from-[#871DEE] to-indigo-500 blur-[30px]">
+                </div>
+              </div>
+            </div>
+
+            <a href="mailto:herny@hernysgodoy.com" class="text-white/40 hover:text-white font-mono text-xs tracking-widest uppercase transition-colors">o enviar email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         FOOTER
+    ════════════════════════════════════════════════════════════════ -->
+    <footer class="py-12 px-8 md:px-16 border-t border-white/5 bg-black relative">
+       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+          <div class="flex flex-col items-center md:items-start gap-2">
+             <div class="text-white font-bold tracking-[0.3em] uppercase text-sm">HERNY<span class="text-royal-violet">S</span>GODOY</div>
+             <p class="text-white/20 text-[10px] tracking-widest uppercase">Design & technology for sustainable ideas</p>
+          </div>
+
+          <div class="text-white/20 font-mono text-[10px] tracking-[0.2em] uppercase">
+            © 2026 hernysgodoy.com
+          </div>
+
+          <div class="flex gap-6">
+             <a href="#" class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">IG</a>
+             <a href="#" class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">LI</a>
+             <a href="#" class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">BE</a>
+          </div>
+       </div>
+    </footer>
 
   </main>
 
@@ -819,6 +1085,30 @@
 
       // STEP 4 initial state
       gsap.set(imageWrap, { x: 60, opacity: 0 });
+
+      // ── NEW SECTIONS REVEAL ANIMATIONS ───────────────────────────
+      // We will select all sections with .reveal and elements inside with .text-reveal or common tags
+      const reveals = document.querySelectorAll('.reveal');
+
+      reveals.forEach(section => {
+        const textElements = section.querySelectorAll('.text-reveal, .service-card, .step, h2, p, .group');
+
+        gsap.fromTo(textElements,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: section,
+              start: 'top 75%',
+              toggleActions: 'play none none none',
+            }
+          }
+        );
+      });
 
     });
   </script>

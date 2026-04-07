@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loader 3D cuadrado con Simulación de Carga</title>
+  <title>Herny Godoy — Diseño & Tecnología</title>
+  <link rel="icon" type="image/png" href="img/favicon.png">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -14,44 +15,45 @@
       overflow-x: hidden;
       max-width: 100%;
     }
+
+    /* * {
+      outline: 1px dashed yellow;
+    } */
   </style>
 </head>
 
 <body class="bg-black">
   <!-- NAVBAR FIXEADO (Inicialmente invisible con opacity-0 y -translate-y) -->
   <nav id="main-nav"
-    class="fixed top-0 left-0 w-full z-50 px-6 py-4 transition-all duration-300 opacity-0 -translate-y-5 pointer-events-none">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <!-- LADO IZQUIERDO: LOGO SVG CUADRADO -->
-      <a href="#section-02" class="nav-link-item block w-[60px] h-[60px] relative group" aria-label="Volver al inicio">
-        <img src="img/H-isologo-bg.svg" alt="HernysGodoy Logo" class="w-full h-full object-contain rounded-xl">
-      </a>
+    class="fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300  opacity-0 -translate-y-5 pointer-events-none">
+    <div class="mx-auto flex justify-between items-center px-8 md:px-16">
+      <!-- LADO IZQUIERDO: LOGO SVG CUADRADO --><a href="#section-02"
+        class="nav-link-item block w-[60px] h-[60px] relative group" aria-label="Volver al inicio"><img
+          src="img/H-isologo-bg.svg" alt="HernysGodoy Logo" class="w-full h-full object-contain rounded-xl"></a>
       <!-- LADO DERECHO: LINKS DESKTOP -->
       <ul class="hidden md:flex gap-8 items-center">
         <li><a href="#section-03"
             class="nav-link text-white font-base text-sm tracking-widest hover:text-purple-600 hover:font-bold transition-colors relative pb-1 group">SERVICIOS<span
-              class="absolute bottom-0 left-0 w-0 h-[1px] bg-purple-600 transition-all duration-300 group-hover:w-full"></span></a>
+              class="absolute bottom-0 left-0 w-0 h-[1px] bg-purple-600 hover:font-bold transition-all duration-300 group-hover:w-full"></span></a>
         </li>
         <li><a href="#section-04"
             class="nav-link text-white font-base text-sm tracking-widest hover:text-purple-600 hover:font-bold transition-colors relative pb-1 group">SOBRE
-            MÍ<span
-              class="absolute bottom-0 left-0 w-0 h-[1px] bg-purple-600 transition-all duration-300 group-hover:w-full"></span></a>
+            MI<span
+              class="absolute bottom-0 left-0 w-0 h-[1px] bg-purple-600 hover:font-bold transition-all duration-300 group-hover:w-full"></span></a>
         </li>
         <li><a href="#section-05"
             class="nav-link text-white font-base text-sm tracking-widest hover:text-purple-600 hover:font-bold transition-colors relative pb-1 group">PROCESO<span
-              class="absolute bottom-0 left-0 w-0 h-[1px] bg-purple-600 transition-all duration-300 group-hover:w-full"></span></a>
+              class="absolute bottom-0 left-0 w-0 h-[1px] bg-purple-600 hover:font-bold transition-all duration-300 group-hover:w-full"></span></a>
         </li>
         <li><a href="#section-06"
             class="nav-link text-white font-bold text-sm tracking-widest bg-white/10 px-4 py-2 rounded-md hover:bg-purple-600 transition-all">CONTACTO</a>
         </li>
       </ul>
-      <!-- BOTÓN HAMBURGUESA (MÓVIL) -->
-      <button id="menu-toggle"
+      <!-- BOTÓN HAMBURGUESA (MÓVIL) --><button id="menu-toggle"
         class="md:hidden text-white focus:outline-none pointer-events-auto relative w-10 h-10 flex justify-center items-center">
-        <div class="w-8 h-8 flex flex-col justify-center gap-1.5 items-end">
-          <span class="block w-8 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-          <span class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-        </div>
+        <div class="w-8 h-8 flex flex-col justify-center gap-1.5 items-end"><span
+            class="block w-8 h-0.5 bg-white transition-all duration-300 origin-center"></span><span
+            class="block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span></div>
       </button>
     </div>
   </nav>
@@ -64,8 +66,7 @@
       </li>
       <li class="overflow-hidden"><a href="#section-04"
           class="mobile-link block text-4xl text-gray-400 hover:text-white font-light tracking-tight translate-y-10 transition-transform duration-500 delay-75">SOBRE
-          MÍ</a>
-      </li>
+          MÍ</a></li>
       <li class="overflow-hidden"><a href="#section-05"
           class="mobile-link block text-4xl text-gray-400 hover:text-white font-light tracking-tight translate-y-10 transition-transform duration-500 delay-150">PROCESO</a>
       </li>
@@ -74,10 +75,9 @@
       </li>
     </ul>
   </div>
-
   <main>
-
-    <section class="min-w-screen min-h-screen grid place-items-center text-center" id="section-01">
+    <section class="min-w-screen min-h-screen grid place-items-center text-center" id="section-01"
+      data-wave-opacity="0.4">
       <span class="loader-text">CARGANDO 0%</span>
       <div class="loader">
         <div class="square">
@@ -250,13 +250,10 @@
       </div>
     </section>
 
-
-    <!-- SECTION HERO CONTENT: Real Hero (two-column layout) -->
-    <section id="section-hero-main"
-      class="hero-main relative min-w-screen min-h-screen flex items-center overflow-hidden" style="padding: 6rem 0;">
-
+    <section class="hero-main relative min-w-screen min-h-screen flex items-start md:items-center overflow-x-hidden md:overflow-hidden" id="section-02"
+      data-wave-opacity="0.3">
       <!-- LEFT CONTENT (≈45% width) -->
-      <div id="hero-content" class="relative z-10 flex flex-col gap-6 px-8 md:px-16 w-full md:w-[45%]">
+      <div id="hero-content" class="relative z-10 flex flex-col gap-6 px-8 md:px-16 w-full md:w-[45%] pt-[40vh] pb-16 md:pt-0 md:pb-0">
 
         <!-- 2 · Eyebrow -->
         <p id="hero-eyebrow" class="text-xs tracking-[0.25em] font-mono" style="color: var(--royalViolet, #8b5cf6);">
@@ -268,13 +265,15 @@
           style="font-size: clamp(1.6rem, 4vw, 3.2rem);">
           Design and technology
           <span class="block">
-            <span class="uppercase">FOR</span> <span class="text-royal-violet font-bold">sustainable ideas</span>
+            <span class="uppercase">FOR</span> <span class="text-royal-violet font-bold">sustainable
+              ideas</span>
           </span>
         </h2>
 
         <!-- 3 · Body text -->
         <p id="hero-body" class="text-white/60 text-sm leading-relaxed max-w-sm">
-          Diseñador gráfico, desarrollador web y estratega digital con más de 20 años de experiencia. Ayudo a empresas y
+          Diseñador gráfico, desarrollador web y estratega digital con más de 20 años de experiencia. Ayudo a
+          empresas y
           PyMEs a generar más ventas y leads con branding, desarrollo web y marketing potenciado con IA.
         </p>
 
@@ -319,14 +318,15 @@
       </div><!-- /hero-content -->
 
       <!-- 6 · Hero image (right side, ~55% viewport width) -->
-      <div id="hero-image-wrap" class="absolute right-0 top-0 h-full w-full md:w-[57%] overflow-hidden">
-        <img id="hero-image" src="img/hernysgodoy-foto.jpg" alt="Herny Godoy" class="w-full h-full object-cover"
+      <div id="hero-image-wrap" class="absolute right-0 top-0 h-[70vh] md:h-full w-full md:w-[57%] overflow-hidden pointer-events-none">
+        <img id="hero-image" src="img/hernysgodoy-foto.jpg" alt="Herny Godoy" class="w-full h-full object-cover object-top md:object-center"
           style="transform: scale(1.04); transform-origin: center center;">
         <!-- Dark gradient overlay to blend left edge -->
-        <div class="absolute inset-0 pointer-events-none"
+        <div class="absolute inset-0 pointer-events-none hidden md:block"
           style="background: linear-gradient(to right, #000 0%, transparent 30%);"></div>
+        <div class="absolute inset-0 pointer-events-none block md:hidden"
+          style="background: linear-gradient(to top, #000 0%, transparent 40%);"></div>
       </div>
-
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
@@ -376,22 +376,25 @@
       </style>
     </div>
 
+
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 03: SERVICIOS
+         SECTION 02: SERVICIOS
     ════════════════════════════════════════════════════════════════ -->
-    <section id="section-03" class="py-24 px-8 md:px-16 relative">
-      <div class="max-w-7xl mx-auto">
+    <section id="section-03" class="min-w-screen min-h-screen py-24 px-8 md:px-16 relative" data-wave-opacity="0.3">
+
+      <div class="mx-auto">
         <div class="flex flex-col mb-16">
           <span class="text-xs tracking-[0.3em] font-mono text-royal-violet mb-4 uppercase">// 01 —
             Servicios</span>
           <h2 class="text-white text-5xl md:text-7xl font-bold tracking-tight uppercase leading-[0.9]">Lo
             que<br>construyo</h2>
         </div>
+        <!-- SERVICIOS -->
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- CARD 1 -->
+          <!-- CARD 1: Desarrollo Web -->
           <div
-            class="service-card group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:border-royal-violet/30 overflow-hidden">
+            class="service-card group relative p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-600/40 transition-colors backdrop-blur-md transition-all duration-500 overflow-hidden">
             <div
               class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all">
             </div>
@@ -401,7 +404,9 @@
                 viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="4" y="8" width="32" height="24" rx="2" stroke="currentColor" stroke-width="1.5" />
                 <path d="M4 14h32" stroke="currentColor" stroke-width="1.5" />
-                <path d="M14 22l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <circle cx="8" cy="11" r="1" fill="currentColor" />
+                <circle cx="12" cy="11" r="1" fill="currentColor" />
+                <path d="M14 20l4 4 8-8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </div>
             <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Desarrollo Web</h3>
@@ -414,11 +419,14 @@
                 class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">HTML/CSS</span>
               <span
                 class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">UX/UI</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">WordPress</span>
             </div>
           </div>
-          <!-- CARD 2 -->
+
+          <!-- CARD 2: Branding & Diseño -->
           <div
-            class="service-card group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:border-royal-violet/30 overflow-hidden">
+            class="service-card group relative p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-600/40 transition-colors backdrop-blur-md transition-all duration-500 overflow-hidden">
             <div
               class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all">
             </div>
@@ -432,21 +440,23 @@
                 <circle cx="20" cy="20" r="5" stroke="currentColor" stroke-width="1.5" />
               </svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Branding & Diseño</h3>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Branding &amp; Diseño</h3>
             <p class="text-white/60 text-sm leading-relaxed mb-6">Identidad visual que comunica y vende. Logo, paleta,
-              tipografía y sistema de marca para que tu negocio se vea diferente.</p>
+              tipografía y sistema de marca para que tu negocio se vea diferente y profesional.</p>
             <div class="flex flex-wrap gap-2">
               <span
                 class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Logo</span>
               <span
-                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Identidad</span>
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Identidad
+                visual</span>
               <span
                 class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Packaging</span>
             </div>
           </div>
-          <!-- CARD 3 -->
+
+          <!-- CARD 3: Marketing Digital -->
           <div
-            class="service-card group relative p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md transition-all duration-500 hover:bg-white/10 hover:border-royal-violet/30 overflow-hidden">
+            class="service-card group relative p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-600/40 transition-colors backdrop-blur-md transition-all duration-500 overflow-hidden">
             <div
               class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all">
             </div>
@@ -457,19 +467,114 @@
                 <path d="M8 32l8-12 6 8 4-6 6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                   stroke-linejoin="round" />
                 <circle cx="30" cy="12" r="6" stroke="currentColor" stroke-width="1.5" />
+                <path d="M30 9v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
               </svg>
             </div>
             <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Marketing Digital</h3>
             <p class="text-white/60 text-sm leading-relaxed mb-6">Estrategia, redes sociales, campañas y gestión de
-              leads. Marketing que se mide y se optimiza para generar ventas reales.</p>
+              leads por WhatsApp. Marketing que se mide y se optimiza para generar ventas reales.</p>
             <div class="flex flex-wrap gap-2">
               <span
-                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">SEO/GEO</span>
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">SEO</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">GEO</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Redes
+                Sociales</span>
               <span
                 class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Google
                 Ads</span>
+            </div>
+          </div>
+
+          <!-- CARD 4: IA & Automatización -->
+          <div
+            class="service-card group relative p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-600/40 transition-colors backdrop-blur-md transition-all duration-500 overflow-hidden">
+            <div
+              class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all">
+            </div>
+            <div class="text-white/20 font-mono text-xs mb-8 tracking-widest">04</div>
+            <div class="mb-6">
+              <svg class="w-10 h-10 text-royal-violet transition-transform duration-500 group-hover:scale-110"
+                viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="8" y="12" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <rect x="22" y="12" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <rect x="15" y="26" width="10" height="8" rx="2" stroke="currentColor" stroke-width="1.5" />
+                <path d="M13 22l7 4M27 22l-7 4" stroke="currentColor" stroke-width="1.5" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">IA &amp; Automatización</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">Integración de inteligencia artificial en flujos de
+              trabajo, atención al cliente y procesos de venta para que tu negocio escale sin complejidad.</p>
+            <div class="flex flex-wrap gap-2">
               <span
-                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Redes</span>
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">IA
+                Generativa</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Automatización</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Chatbots</span>
+            </div>
+          </div>
+
+          <!-- CARD 5: Tienda Online B2B -->
+          <div
+            class="service-card group relative p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-600/40 transition-colors backdrop-blur-md transition-all duration-500 overflow-hidden">
+            <div
+              class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all">
+            </div>
+            <div class="text-white/20 font-mono text-xs mb-8 tracking-widest">05</div>
+            <div class="mb-6">
+              <svg class="w-10 h-10 text-royal-violet transition-transform duration-500 group-hover:scale-110"
+                viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 28l8-10 6 6 4-4 6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M10 32h20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                <path d="M30 8l2 6-6-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Tienda Online B2B</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">Desarrollo de e-commerce con foco en conversión B2B.
+              Catálogo, gestión de pedidos y experiencia de compra optimizada para empresas.</p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">E-commerce</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">B2B</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Catálogo
+                digital</span>
+            </div>
+          </div>
+
+          <!-- CARD 6: Landing Pages -->
+          <div
+            class="service-card group relative p-8 rounded-2xl bg-zinc-900/30 border border-zinc-800 hover:border-purple-600/40 transition-colors backdrop-blur-md transition-all duration-500 overflow-hidden">
+            <div
+              class="absolute -top-10 -right-10 w-32 h-32 bg-royal-violet/10 rounded-full blur-3xl group-hover:bg-royal-violet/20 transition-all">
+            </div>
+            <div class="text-white/20 font-mono text-xs mb-8 tracking-widest">06</div>
+            <div class="mb-6">
+              <svg class="w-10 h-10 text-royal-violet transition-transform duration-500 group-hover:scale-110"
+                viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 20 Q20 8 30 20 Q20 32 10 20Z" stroke="currentColor" stroke-width="1.5" fill="none" />
+                <circle cx="20" cy="20" r="4" stroke="currentColor" stroke-width="1.5" />
+                <path d="M20 8v4M20 28v4M8 20h4M28 20h4" stroke="currentColor" stroke-width="1.5"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-4 tracking-tight">Landing Pages</h3>
+            <p class="text-white/60 text-sm leading-relaxed mb-6">Páginas de captación diseñadas para convertir
+              visitantes en leads y leads en clientes. Velocidad, claridad y persuasión en cada sección.</p>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Conversión</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">Lead
+                generation</span>
+              <span
+                class="px-2 py-1 bg-white/5 rounded text-[10px] text-white/40 border border-white/5 uppercase tracking-widest">CRO</span>
             </div>
           </div>
         </div>
@@ -477,30 +582,18 @@
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
-         SECTION 04: SOBRE MÍ
+         SECTION 02: SOBRE MÍ
     ════════════════════════════════════════════════════════════════ -->
-    <section id="section-04" class="py-24 px-8 md:px-16 bg-[#050505] relative overflow-hidden">
-      <!-- Background elements -->
-      <div
-        class="absolute top-0 right-0 w-[500px] h-[500px] bg-royal-violet/5 rounded-full blur-[120px] pointer-events-none">
-      </div>
+    <section id="section-04" class="min-w-screen min-h-screen py-24 px-8 md:px-16 relative overflow-hidden"
+      data-wave-opacity="0.3">
 
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
+      <div class="mx-auto flex flex-col md:flex-row gap-12 items-center">
         <!-- LEFT: Visual -->
         <div class="w-full md:w-1/2 relative">
-          <div class="relative max-w-md mx-auto aspect-square group">
-            <div
-              class="absolute inset-0 border border-royal-violet/20 rounded-3xl translate-x-4 translate-y-4 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-500">
-            </div>
-            <div
-              class="absolute inset-0 bg-white/5 border border-white/10 rounded-3xl backdrop-blur-sm z-10 flex items-center justify-center overflow-hidden">
-              <img src="img/H-isologo-bg.svg" alt="HernysGodoy"
-                class="w-48 h-48 opacity-10 group-hover:opacity-20 group-hover:scale-110 transition-all duration-700">
-              <div class="absolute bottom-6 left-6 z-20">
-                <p class="text-white font-bold text-2xl tracking-tighter leading-none">Buenos Aires<br><span
-                    class="text-royal-violet text-sm font-mono tracking-widest uppercase">Argentina</span></p>
-              </div>
-            </div>
+          <div class="relative max-h-md my-auto aspect-square group">
+            <video src="media/H-3D.mp4" autoplay loop muted playsinline
+              class="w-full h-full object-cover mix-blend-screen">
+            </video>
           </div>
         </div>
 
@@ -512,13 +605,16 @@
             Estrategia<br>y marca</h2>
           <p class="text-royal-violet font-mono text-sm tracking-widest uppercase">Para ideas sustentables</p>
           <p class="text-white/60 text-base leading-relaxed">
-            Con más de 20 años en diseño y 10 en desarrollo web, trabajo con empresas y PyMEs que necesitan más que una
+            Con más de 20 años en diseño y 10 en desarrollo web, trabajo con empresas y PyMEs que necesitan
+            más que una
             web bonita — necesitan resultados.
             <br><br>
-            Diseño marcas, desarrollo sitios orientados a conversión y ejecuto estrategias de marketing digital
+            Diseño marcas, desarrollo sitios orientados a conversión y ejecuto estrategias de marketing
+            digital
             potenciadas con IA para que sus clientes ideales los encuentren, confíen y compren.
             <br><br>
-            No soy solo desarrollador ni solo diseñador. Soy el profesional que une marca, tecnología y estrategia para
+            No soy solo desarrollador ni solo diseñador. Soy el profesional que une marca, tecnología y
+            estrategia para
             que todo funcione junto — y se refleje en ventas.
           </p>
 
@@ -528,16 +624,16 @@
             <span
               class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-white/40 tracking-widest uppercase">B2B</span>
             <span
-              class="px-3 py-1 bg-royal-violet/10 border border-royal-violet/20 rounded-full text-[10px] text-royal-violet tracking-widest uppercase">Sustentabilidad</span>
+              class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-white/40 tracking-widest uppercase">Sustentabilidad</span>
             <span
               class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] text-white/40 tracking-widest uppercase">Fábricas</span>
           </div>
 
           <div class="mt-8">
             <a href="https://wa.me/541135884615"
-              class="inline-flex items-center gap-3 text-white font-bold tracking-widest text-xs group">
+              class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white text-xs font-bold tracking-widest transition-all duration-300"
+              style="background: var(--royalViolet, #8b5cf6);">
               INICIAR CONVERSACIÓN
-              <span class="w-8 h-[1px] bg-royal-violet group-hover:w-12 transition-all"></span>
             </a>
           </div>
         </div>
@@ -547,7 +643,7 @@
     <!-- ═══════════════════════════════════════════════════════════
          SECTION 05: PROCESO
     ════════════════════════════════════════════════════════════════ -->
-    <section id="section-05" class="py-24 px-8 md:px-16 relative bg-black">
+    <section id="section-05" class="py-24 px-8 md:px-16 relative" data-wave-opacity="0.3">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col mb-16 items-center text-center">
           <span class="text-xs tracking-[0.3em] font-mono text-royal-violet mb-4 uppercase">// 03 —
@@ -562,39 +658,47 @@
           <div
             class="group p-8 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors">
             <div
-              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">01
+              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">
+              01
             </div>
             <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Diagnóstico</h4>
-            <p class="text-white/40 text-sm leading-relaxed">Entiendo tu negocio, tus objetivos y dónde estás parado
+            <p class="text-white/40 text-sm leading-relaxed">Entiendo tu negocio, tus objetivos y dónde
+              estás parado
               digitalmente. Sin esto, no hay estrategia real.</p>
           </div>
           <!-- STEP 2 -->
           <div
             class="group p-8 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors">
             <div
-              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">02
+              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">
+              02
             </div>
             <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Estrategia</h4>
-            <p class="text-white/40 text-sm leading-relaxed">Defino qué hace falta construir y en qué orden. Marca, web,
+            <p class="text-white/40 text-sm leading-relaxed">Defino qué hace falta construir y en qué orden.
+              Marca, web,
               contenido o campañas.</p>
           </div>
           <!-- STEP 3 -->
           <div
             class="group p-8 border-b md:border-b-0 md:border-r border-white/10 hover:bg-white/[0.02] transition-colors">
             <div
-              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">03
+              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">
+              03
             </div>
             <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Ejecución</h4>
-            <p class="text-white/40 text-sm leading-relaxed">Diseño y desarrollo con foco en el resultado. Cada decisión
+            <p class="text-white/40 text-sm leading-relaxed">Diseño y desarrollo con foco en el resultado.
+              Cada decisión
               tiene un porqué estratégico.</p>
           </div>
           <!-- STEP 4 -->
           <div class="group p-8 hover:bg-white/[0.02] transition-colors">
             <div
-              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">04
+              class="text-royal-violet/10 font-bold text-7xl mb-4 group-hover:text-royal-violet/20 transition-colors">
+              04
             </div>
             <h4 class="text-white font-bold text-lg mb-4 tracking-tight">Resultados</h4>
-            <p class="text-white/40 text-sm leading-relaxed">Mido, optimizo y escalo. El trabajo no termina con la
+            <p class="text-white/40 text-sm leading-relaxed">Mido, optimizo y escalo. El trabajo no termina
+              con la
               entrega — termina cuando los números mejoran.</p>
           </div>
         </div>
@@ -604,7 +708,7 @@
     <!-- ═══════════════════════════════════════════════════════════
          SECTION 06: CTA FINAL
     ════════════════════════════════════════════════════════════════ -->
-    <section id="section-06" class="py-32 px-8 md:px-16 relative overflow-hidden bg-black text-center">
+    <section id="section-06" class="py-32 px-8 md:px-16 relative overflow-hidden text-center" data-wave-opacity="0.6">
       <!-- Background giant text -->
       <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
         <span class="text-[20vw] font-bold tracking-tighter text-royal-violet">HERNY</span>
@@ -616,7 +720,8 @@
         <h2 class="text-white text-5xl md:text-8xl font-bold tracking-tighter uppercase leading-[0.8] mb-8">
           Hablemos hoy</h2>
         <p class="text-white/60 text-lg md:text-xl max-w-xl mb-12">
-          Contame tu proyecto. En 24hs te respondo con una propuesta concreta o agendamos un diagnóstico gratuito.
+          Contame tu proyecto. En 24hs te respondo con una propuesta concreta o agendamos un diagnóstico
+          gratuito.
         </p>
 
         <div class="flex flex-col md:flex-row gap-6 items-center">
@@ -653,7 +758,8 @@
         <div class="flex flex-col items-center md:items-start gap-2">
           <div class="text-white font-bold tracking-[0.3em] uppercase text-sm">HERNY<span
               class="text-royal-violet">S</span>GODOY</div>
-          <p class="text-white/20 text-[10px] tracking-widest uppercase">Design & technology for sustainable ideas</p>
+          <p class="text-white/20 text-[10px] tracking-widest uppercase">Design & technology for sustainable
+            ideas</p>
         </div>
 
         <div class="text-white/20 font-mono text-[10px] tracking-[0.2em] uppercase">
@@ -661,15 +767,17 @@
         </div>
 
         <div class="flex gap-6">
-          <a href="#" class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">IG</a>
-          <a href="#" class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">LI</a>
-          <a href="#" class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">BE</a>
+          <a href="https://www.instagram.com/hernysgodoy/" target="_blank"
+            class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">IG</a>
+          <a href="https://www.linkedin.com/in/herny-godoy/" target="_blank"
+            class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">LI</a>
+          <a href="https://www.facebook.com/profile.php?id=61574285962657" target="_blank"
+            class="text-white/40 hover:text-royal-violet transition-colors text-xs font-mono">FB</a>
         </div>
       </div>
     </footer>
 
   </main>
-
   <style>
     :root {
       --wave-opacity: 0.3;
@@ -706,8 +814,9 @@
   <script src="https://unpkg.com/lenis@1.3.11/dist/lenis.min.js"></script>
   <script type="text/javascript"
     src="https://codepen.io/wodniack/pen/YzmgGzP/b66656b6c21a73b4ca05fda86662cc3a.js"></script>
-  <!-- GSAP + Plugins -->
+  <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script> -->
 
   <script type="text/javascript">
     class AWaves extends HTMLElement {
@@ -998,8 +1107,8 @@
   </script>
 
   <script>
-
     document.addEventListener("DOMContentLoaded", function () {
+
       // 0. SCROLL RESET & LOCK
       history.scrollRestoration = 'manual';
       window.scrollTo(0, 0);
@@ -1088,6 +1197,7 @@
         }
       });
 
+
       // 2. OPACITY CONTROL SYSTEM
       // Using IntersectionObserver as requested for performance
 
@@ -1118,6 +1228,7 @@
       sections.forEach(section => {
         observer.observe(section);
       });
+
 
       // --- LOGICA NAVBAR & MENU MÓVIL ---
 
@@ -1241,7 +1352,6 @@
     // Assuming to keep it but commented out as it was before, or just remove for cleanliness if unwanted.
     // Leaving it out based on "Only implement requested task" principle, users code had it commented out mainly.
   </script>
-
 
 </body>
 

@@ -1,0 +1,7 @@
+# Bloquear documentación interna
+<FilesMatch "^(AGENTS\.md|README\.md)$">
+    Require all denied
+</FilesMatch>
+
+# Bloquear carpeta docs
+RedirectMatch 403 ^/docs(/|$)

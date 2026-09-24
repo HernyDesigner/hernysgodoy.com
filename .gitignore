@@ -1,4 +1,5 @@
 node_modules/
+
 # HTML de prueba: solo locales
 /hernysgodoy.html
 /07-04-2026-index.html
@@ -6,3 +7,6 @@ node_modules/
 /loader-logo-v1.html
 /stories_landing_page_herny.html
 /ui.html
+
+# Aplicación independiente: no tocar durante despliegues del sitio principal
+/app/

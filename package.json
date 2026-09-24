@@ -1,0 +1,31 @@
+{
+  "name": "3-maquetado",
+  "version": "1.0.0",
+  "description": "Maqueta estatica del sitio de Herny Godoy. El proyecto esta construido con HTML, CSS y JavaScript vanilla, usando dependencias externas por CDN.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --watch",
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./css/input.css -o ./css/tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HernyDesigner/hernysgodoy.com.ar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/HernyDesigner/hernysgodoy.com.ar/issues"
+  },
+  "homepage": "https://github.com/HernyDesigner/hernysgodoy.com.ar#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.28",
+    "tailwindcss": "^3.4.19"
+  }
+}

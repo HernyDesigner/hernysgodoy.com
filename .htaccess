@@ -5,3 +5,11 @@
 
 # Bloquear carpeta docs
 RedirectMatch 403 ^/docs(/|$)
+
+# Bloquear el repositorio Git y archivos de desarrollo
+RedirectMatch 403 ^/\.git(/|$)
+RedirectMatch 403 ^/\.gitignore$
+RedirectMatch 403 ^/package(-lock)?\.json$
+RedirectMatch 403 ^/tailwind\.config\.js$
+RedirectMatch 403 ^/css/input\.css$
+RedirectMatch 403 ^/node_modules(/|$)
